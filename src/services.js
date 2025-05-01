@@ -37,6 +37,7 @@ export async  function signup (formData){
         const data= await response.json()
         console.log(data);
         console.log("User Registered",formData);
+        return data;
     }catch(err){
         console.log(err.message);
     }
@@ -145,6 +146,7 @@ export async function fetchTeamMessages(storedUserId) {
         const result = await response.json();
 
         console.log(result)
+        return result;
 
     } catch (err) {
         console.log(err.message)
