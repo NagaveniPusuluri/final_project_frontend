@@ -6,7 +6,7 @@ import search from '../assets/search.png';
 import { fetchBotDetails,fetchCustomer, fetchTeamDetails,fetchTeamMessages } from '../services';
 
 function Dashboard(props) {
-    const [customer, setCustomer] = useState(null);
+    const [customer, setCustomer] = useState([]);
     const [activeTab, setActiveTab] = useState('all');
     const [searchTicket,setSearchTicket]=useState('');
     const storedUserId = localStorage.getItem("userId");
@@ -42,17 +42,17 @@ function Dashboard(props) {
 
     const filteredCustomers=customer.filter(cust =>{
         // const ticketNumber= generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo.includes(searchTicket.toLowerCase());
+        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     })
 
     const filteredResolved = resolvedTickets.filter(cust => {
         // const ticketNumber = generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo.includes(searchTicket.toLowerCase());
+        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     });
 
     const filteredUnresolved = unresolvedTickets.filter(cust => {
         // const ticketNumber = generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo.includes(searchTicket.toLowerCase());
+        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     });
 
     // function generateTicketNumber(createdAt) {
@@ -110,10 +110,10 @@ function Dashboard(props) {
                                         )}
                                     </p>
                                 </div>
-                                {cust.messages.length > 0 && (
+                                {cust.messages?.length > 0 && (
 
                                     <div className={styles.cardBody} key={index}>
-                                        <p>{cust.messages[0].message}</p>
+                                        <p>{cust.messages[0]?.message}</p>
                                         <p>  {Math.floor((new Date() - new Date(cust.createdAt)) / (1000 * 60 * 60))}:00</p>
                                     </div>
 
@@ -160,7 +160,7 @@ function Dashboard(props) {
 
                             {cust.messages?.length >0 &&(
                                 <div className={styles.cardBody} >
-                                    <p>{cust.messages[0].message}</p>
+                                    <p>{cust.messages[0]?.message}</p>
                                     <p>{Math.floor((new Date() - new Date(cust.messages[0].createdAt)) / (1000 * 60 * 60))}:00</p>
                                 </div>
                             )}
@@ -203,7 +203,7 @@ function Dashboard(props) {
 
                             {cust.messages?.length>0  &&  (
                                 <div className={styles.cardBody} >
-                                    <p>{cust.messages[0].message}</p>
+                                    <p>{cust.messages[0]?.message}</p>
                                     <p>{Math.floor((new Date() - new Date(cust.messages[0].createdAt)) / (1000 * 60 * 60))}:00</p>
                                 </div>
                             )}
