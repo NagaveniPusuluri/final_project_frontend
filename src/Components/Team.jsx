@@ -239,21 +239,12 @@ function Team() {
               <label>Role</label>
               <select name='role' value={newteamMember.role} 
               className={styles.select}
-               onChange={handleInputChange}>
+               onChange={handleInputChange} required>
 
                 <option value="">Select Role</option>
                 <option value="admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
-              {/* <input
-                type="text"
-                name="role"
-                placeholder="Role"
-                value={newteamMember.role}
-                onChange={handleInputChange}
-                className={styles.input}
-                required
-              /> */}
               <div className={styles.modalButtons}>
                 <button type='submit' className={styles.saveBtn}>
                   {isEditing ? 'Edit' : 'Save'}

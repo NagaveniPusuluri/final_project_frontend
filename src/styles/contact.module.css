@@ -30,6 +30,7 @@
     align-items: stretch;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: hidden;
 }
 .containerThree{
     width: 40%;
@@ -56,10 +57,20 @@
 .activeChat {
     background-color: #EFEFEF; 
 }
-
-.profileName{
+.profileName{  
     color: #5E9BD5;
     font-size: 14px;
+}
+
+.botProfileName{
+    color: #5E9BD5;
+    font-size: 14px;
+    align-self: flex-end;
+}
+.custProfileName{
+    color: #5E9BD5;
+    font-size: 14px;
+    align-self: flex-start;
 }
 .chatMessage{
     color: #9A9B9D;
@@ -106,12 +117,14 @@
     border: none;
     width: 350px;
     background-color: transparent;
+    cursor: pointer;
 }
 .dropdownOne{
     margin: 4px;
     border: none;
     width: 380px;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .custDetail{
@@ -137,6 +150,7 @@
     justify-content: space-between;
     padding: 2%;
     border-bottom: 1px solid #D1D6DA;
+    height: 50px;
 }
 .searchContainer{
     width: 100%;
@@ -156,6 +170,7 @@
     background-color: transparent;
     padding: 4px;
     color:#6A6B70;
+    outline: none;
 }
 
 .sendIcon{
@@ -184,38 +199,44 @@
 }
 .messageContainer {
     width: 100%;
-    flex-grow: 1;
-    margin: 2px;
-    padding: 2px;
+    flex: 1;
+    padding: 2%;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    overflow-y: scroll;
-    max-height: calc(100vh - 200px); 
+    height: 80vh;
+    overflow-y: auto;
 }
 
 .messageBubble {
     border-radius: 10px;
     display: flex;
     font-size: 14px;
-    max-width: 70%;
+    max-width: 90%;
     color: #6A6B70;
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap; 
     height: auto;
+    margin: 2%;
+    padding: 2%;
+    height: 180px;
 }
 .custMessage {
-    margin: 5%;
+    margin: 4%;
     font-size: 14px;
-    padding: 4% 2%;
+    padding: 2%;
+    margin: 2%;
+    display: flex;
     align-self: flex-start;
   }
 .botMessage{
-    margin: 5%;
+    margin: 4%;
     font-size: 14px;
-    padding: 4% 2%;
+    padding: 2%;
+    display: flex;
     align-self: flex-end;
+    flex-direction: row-reverse;
   }
 .modelTeamContainer{
     height: 100px;
@@ -285,8 +306,5 @@
 }
 .profileMsgBody{
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    justify-content: space-around;
-    margin-left: 2%;
 }

@@ -4,7 +4,6 @@ import frame from '../assets/Frame.png';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import login from '../services';
-// const url = import.meta.env.VITE_BACKEND_URL;
 const Login = () => {
     const [formData, setFormData] = useState({
         username: '',

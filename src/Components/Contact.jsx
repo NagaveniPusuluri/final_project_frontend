@@ -254,11 +254,14 @@ function Contact() {
                     }`}
                 >
                   <img src={profile} alt='profile'  className={styles.profilePic}/>
-                  <div className={styles.profileMsgBody}>
-                    <div className={styles.profileName}>{selectedCustomer.name}</div>
-                    <div> {msg.message}</div>
+                  <div className={styles.profileMsgBody}> 
+                     <div className={`${msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}`}>
+                      {/* {selectedCustomer.name} */}
+                      {msg.sender === 'bot' ? 'Bot' : selectedCustomer.name}
+                    </div>
+                    <div className={styles.msgText}> {msg.message}</div>
+                    </div>
                   </div>
-                </div>
             }))}
 
                  

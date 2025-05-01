@@ -28,6 +28,7 @@
     border-radius: 5px;
     background-color: transparent;
     border: none;
+    outline: none;
 }
 .heading{
     color: #6A6B70;
@@ -83,7 +84,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90vw;
+    width: 85vw;
 }
 .cardProfile{
     padding: 1%;

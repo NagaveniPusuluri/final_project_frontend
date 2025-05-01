@@ -88,6 +88,7 @@
     border: 1px solid #EEEEEE;
     width: 90%;
     border-radius: 5px;
+    outline: none;
 }
 
 .chatBotMsgBody {
@@ -121,6 +122,7 @@
     border-radius: 5px;
     margin: 5px;
     margin-left: 70px;
+    cursor: pointer;
 }
 .chatBotSendMsg{
     display: flex;
@@ -169,6 +171,7 @@
     height: 50px;
     border-radius: 50%;
     border: 1px solid #EEEEEE;
+    cursor: pointer;
 }
 .blackcolor{
     background-color: black;
@@ -176,6 +179,7 @@
     height: 50px;
     border-radius: 50%;
     border: 1px solid #EEEEEE;
+    cursor: pointer;
 }
 .bluecolor{
     
@@ -184,6 +188,7 @@
     height: 50px;
     border-radius: 50%;
     border: 1px solid #EEEEEE;
+    cursor: pointer;
 }
 .halfwhitecolor{
     background-color: #FAFBFC;
@@ -191,6 +196,7 @@
     height: 50px;
     border-radius: 50%;
     border: 1px solid #EEEEEE;
+    cursor: pointer;
 }
 .colorgroup{
     display: flex;
@@ -227,6 +233,7 @@
     border-radius: 9px;
     padding: 2%;
     margin-left: 70%;
+    cursor: pointer;
 }
 .box, .boxMain{
     background-color: #FFFFFF;
@@ -238,6 +245,7 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
+    margin-bottom:6%;
 }
 .boxMain{
     height: 240px;
@@ -272,5 +280,8 @@
 .selectTimer span{
     font-size: 24px;
     margin: 0 8px;
+}
+.select{
+    cursor: pointer;
 }
 

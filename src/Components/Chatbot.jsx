@@ -10,15 +10,7 @@ function Chatbot() {
   const [minutes, setMinutes]=useState('00');
   const [seconds,setSeconds]=useState('00');
   
-  // useEffect(()=>{
-  //   const saveHour=localStorage.getItem('hourTimer');
-  //   const saveMinutes=localStorage.getItem('minutesTimer');
-  //   const saveSeconds=localStorage.getItem('secondsTimer');
-  //   if (saveHour) setHours(saveHour);
-  //   if (saveMinutes) setMinutes(saveMinutes);
-  //   if (saveSeconds) setSeconds(saveSeconds);
-  // },[]);
-
+  
   const { formData, setFormData,
     welcomeMsg, setWelcomeMsg,
     headerColor, setHeaderColor,
@@ -131,7 +123,6 @@ function Chatbot() {
               <input type='text'
                 className={style.input}
                 placeholder="Write a message"
-                // value={message.message}
                 name='message'
               />
               <img src={sendmsg} alt='send-msg' style={{ cursor: 'pointer' }} />
@@ -256,18 +247,18 @@ function Chatbot() {
               onChange={handleWelcomeMsgChange}
             />
           </div>
-          <div className={style.box}>
+          <div className={style.box} >
             <h5>Missed chat timer </h5>
             <div className={style.selectTimer}>
-              <select value={hours} onChange={(e)=>setHours(e.target.value)}>
+              <select value={hours} onChange={(e)=>setHours(e.target.value)} className={style.select}>
                 {generate(24)}
               </select>
               <span>:</span>
-              <select value={minutes} onChange={(e)=>setMinutes(e.target.value)}>
+              <select value={minutes} onChange={(e)=>setMinutes(e.target.value)} className={style.select}>
                 {generate(60)}
               </select>
               <span>:</span>
-              <select value={seconds} onChange={(e)=>setSeconds(e.target.value)}>
+              <select value={seconds} onChange={(e)=>setSeconds(e.target.value)} className={style.select}>
                 {generate(60)}
               </select>
             </div>

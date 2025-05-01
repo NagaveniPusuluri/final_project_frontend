@@ -3,7 +3,6 @@ import styles from '../styles/dashboard.module.css'
 import sms from '../assets/sms.png';
 import profile from '../assets/profile.png';
 import search from '../assets/search.png';
-// const url = import.meta.env.VITE_BACKEND_URL;
 import { fetchBotDetails,fetchCustomer, fetchTeamDetails,fetchTeamMessages } from '../services';
 
 function Dashboard(props) {

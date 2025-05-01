@@ -8,9 +8,6 @@
     width: 100vw;
     overflow-y: scroll;
 }
-/* .landingContainer{
-    min-height: 100%;
-} */
 
 .header {
     display: flex;
