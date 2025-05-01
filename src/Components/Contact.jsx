@@ -79,7 +79,7 @@ function Contact() {
   const fetchingTeamMembers = async () => {
     const res = await fetchTeamDetails(storedUserId);
     console.log(res);
-    setTeamMembers(res);
+    setTeamMembers(Array.isArray(res)?res:[]);
   }
 
   useEffect(() => {
@@ -344,7 +344,7 @@ function Contact() {
               >
                 <option value="" className={styles.subHeading} >Select a user</option>
 
-                {teamMembers?.map((member, index) => (
+                {Array.isArray(teamMembers) && teamMembers?.map((member, index) => (
                   <option value={member._id} key={index}>
                     {member.username}
                   </option>
