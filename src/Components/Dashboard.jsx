@@ -33,10 +33,10 @@ function Dashboard(props) {
     }, [])
 
    
-    const resolvedTickets = customer.filter(cust => {
+    const resolvedTickets = (customer || []).filter(cust => {
         return cust?.status === 'resolved';
     })
-    const unresolvedTickets = customer.filter(cust => {
+    const unresolvedTickets = (customer|| []).filter(cust => {
         return cust?.status === 'unresolved';
     });
 
@@ -125,9 +125,9 @@ function Dashboard(props) {
                                     <div className={styles.cardProfile}>
                                         <img src={profile} alt='profile' />
                                         <div className={styles.profileDetails}>
-                                            <p>{cust.name}</p>
-                                            <p>{cust.email}</p>
-                                            <p>{cust.phone}</p>
+                                            <p>{cust?.name}</p>
+                                            <p>{cust?.email}</p>
+                                            <p>{cust?.phone}</p>
                                         </div>
                                     </div>
                                     <div>
