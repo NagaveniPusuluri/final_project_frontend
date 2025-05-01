@@ -207,7 +207,7 @@ function Contact() {
         <h3 className={styles.heading}>contact center</h3>
         <h5 className={styles.subHeading}>chats</h5>
         <hr className={styles.line} />
-        {details && details.map((item, index) => (
+        {Array.isArray(details) && details.map((item, index) => (
           <div className={`${styles.chatContainer} ${selectedCustomer?._id === item._id ? styles.activeChat : ''}`} key={index}
             onClick={() => {
               missed(item);
