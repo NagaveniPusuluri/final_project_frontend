@@ -1,0 +1,276 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 2%;
+}
+
+.heading{
+    color: #6A6B70;
+    font-size: 18px;
+    padding-bottom: 4%;
+    width: 100%;
+}
+
+.main{
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.mainLeft{
+    width: 50%;
+}
+.mainRight{
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.chatbotContainer {
+    position: absolute;
+    height: 420px;
+    border: 1px solid;
+    width: 300px;
+    left: 140px;
+    top: 56px;
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+}
+.chatbotHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4%;
+    background-color: #244779;
+}
+
+.ellipseImg2 {
+    width: 26px;
+    height: 26px;
+    padding: 2%;
+}
+.headerName {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.chatBotSendMsg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 6px 0;
+}
+
+.messageBubble {
+    background-color: #FFFFFF;
+    padding: 8px 10px;
+    border-radius: 10px;
+    align-self: flex-end;
+    font-size: 14px;
+    max-width: 80%;
+    margin: 10px 12px;
+}
+
+.input {
+    border: none;
+    padding: 0.6rem;
+    margin: 0 2px;
+    background-color:transparent;
+    border: 1px solid #EEEEEE;
+    width: 90%;
+    border-radius: 5px;
+}
+
+.chatBotMsgBody {
+    flex: 1;
+    gap: 20px;
+    overflow-y: auto;
+    height: auto;
+    padding: 10px;
+    gap: 10px;
+}
+.chatBotForm {
+    font-size: 12px;
+    width: 94%;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+}
+.ellipseImg3{
+    width: 26px;
+    height: 26px;
+}
+.formText{  background-color: #FFFFFF; 
+    padding: 5px;
+    margin: 2px;
+}
+.button {
+    background-color: #244779;
+    border: none;
+    padding: 2%;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 70px;
+}
+.chatBotSendMsg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 6px 0;
+}
+.chatbotPopup {
+    position: absolute;
+    width: 230px;
+    height: 110px;
+    bottom: 70px;
+    left: 160px;
+    text-align: left;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.ellipseImg {
+    position: relative;
+    left: 80px;
+    top: 2px;
+    height: 26px;
+    width: 26px;
+}
+
+.popupClose {
+    position: relative;
+    left: 180px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.6;
+}
+.headerchat{
+    background-color: white;
+}
+
+.whitecolor{
+    background-color:white ;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #EEEEEE;
+}
+.blackcolor{
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #EEEEEE;
+}
+.bluecolor{
+    
+    background-color:#33475B;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #EEEEEE;
+}
+.halfwhitecolor{
+    background-color: #FAFBFC;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #EEEEEE;
+}
+.colorgroup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+.colorgroupTwo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+}
+.squareColor{
+    background-color: #244779;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+.inputbox{
+    padding: 5%;
+    border: 1px solid #EEEEEE ;
+}
+.msgCustomize{
+    background-color: #F6F7F5;
+    border-radius: 9px;
+    border: none;
+    padding: 10px;
+    margin: 2px;
+}
+.saveBtn{
+    background-color: #184E7F;
+    color: white;
+    border-radius: 9px;
+    padding: 2%;
+    margin-left: 70%;
+}
+.box, .boxMain{
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    height: 160px;
+    margin: 2%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.boxMain{
+    height: 240px;
+}
+.msgCustomize{
+    width: 90%;
+}
+.textarea{
+    padding-top: 5%;
+    height: 60%;
+    width: 90%;
+    background-color: #EEEEEE;
+    border: none;
+    margin: 0 4%;
+    /* text-align: center; */
+}
+.selectTimer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 16px;
+}
+
+.selectTimer select{
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #6A6B70;
+    appearance: none;
+    text-align: center;
+}
+
+.selectTimer span{
+    font-size: 24px;
+    margin: 0 8px;
+}
+

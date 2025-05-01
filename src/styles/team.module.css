@@ -1,0 +1,184 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2%;
+  width: 100vw;
+  height: 100%;
+  overflow-y: scroll;
+
+}
+
+.heading {
+  color: #6A6B70;
+  font-size: 18px;
+}
+
+.table {
+  margin: 2% 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th,
+.td {
+  border: 1px solid #E7E7E7;
+  text-align: left;
+  padding: 10px;
+}
+
+.editBtn {
+  background-color: transparent;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.deleteBtn {
+  background-color: transparent;
+  color: #E7E7E7;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.addBtn {
+  background-color: #184E7F;
+  color: #E7E7E7;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 15px;
+  align-items: flex-end;
+  margin-left: 75%;
+  width: 16%;
+  font-size: 14px;
+}
+
+.modelHeading {
+  color: #000000;
+  font-size: 18px;
+  margin: 2% 0;
+}
+
+.subHeading {
+  color: #000000;
+  font-size: 12px;
+  width: 80%;
+  margin-bottom: 2%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.deleteModel {
+  position: fixed;
+  top: 380px;
+  background-color: #FAFBFC;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+  z-index: 1000;
+  left: 860px;
+  width: 400px;
+  height: 180px;
+  border: 1px solid #D1D6DA;
+  border-radius: 10px;
+}
+
+.btngroup {
+  margin-left: 60%;
+}
+
+.modalContent {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 640px;
+  height: 420px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.input {
+  width: 100%;
+  margin: 6px 0;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.select{
+  width: 100%;
+  margin: 6px 0;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.saveBtn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btngrouptwo {
+  width: 200px;
+}
+
+.cancelBtntwo {
+  background-color: transparent;
+  color: #000;
+  padding: 4%;
+  border-radius: 3px;
+  border: none;
+  margin-right: 2%;
+}
+
+.cancelBtntwo:hover {
+  background-color: #184E7F;
+  color: #E7E7E7;
+  padding: 4%;
+  border: none;
+  border-radius: 3px;
+}
+
+.confirmBtn {
+  background-color: #184E7F;
+  color: #E7E7E7;
+  padding: 4%;
+  border-radius: 3px;
+  border: none;
+}

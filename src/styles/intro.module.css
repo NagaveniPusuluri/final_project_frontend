@@ -1,0 +1,457 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+}
+/* .landingContainer{
+    min-height: 100%;
+} */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+    font-size: 54px;
+    font-weight: bold;
+    padding: 0.4rem;
+    margin: 0 4%;
+}
+.containerLeft{
+
+    width: 100px;
+    height: 56px;
+    margin-left: 4%;
+}
+.logo{
+    width: 100%;
+    height: 100%;
+}
+
+.containerRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 16vw;
+}
+
+.signupBtn,
+.startBtn {
+    background-color: #244779;
+    color: #FFFFFF;
+    margin-left: 2%;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 10px;
+}
+
+.loginBtn {
+    background-color: transparent;
+    color: #244779;
+    border: none;
+    padding: 0.6rem;
+}
+
+.signupBtn:hover,
+startBtn:hover {
+    cursor: pointer;
+}
+
+.loginBtn:hover {
+    background-color: #244779;
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.main {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+.mainLeft {
+    width: 50%;
+    margin-left: 10%;
+}
+
+.mainRight {
+    width: 50%;
+    height: 440px;
+    /* margin-top: 20px; */
+}
+
+.heading {
+    color: #30404D;
+    font-size: 54;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    width: 380px;
+}
+
+.subHeading {
+    color: #30404D;
+    font-size: 16;
+    margin-bottom: 1rem;
+    width: 500px;
+    opacity: 0.8;
+}
+
+.mainGroup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.subGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playText {
+    color: #30404D;
+    font-size: 22;
+    font-weight: bold;
+}
+
+.chart {
+    position: relative;
+    /* top: 62%;
+    right: 1%; */
+    bottom:110px;
+    left: 300px;
+    border-radius: 5%;
+    width: 212px;
+    height: 130px;
+}
+
+.calendar {
+   position: relative;
+    bottom: 62px;
+    right: 260px;
+    width: 270px;
+    height: 180px;
+}
+
+.card {
+    position: relative;
+    /* top: 12%;
+    right: 6%; */
+    bottom: 530px;
+    left: 200px;
+    border: 1px solid b;
+}
+
+.frame {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #EBF1F9;
+    padding: 1.4rem;
+    margin: 1% 0;
+}
+
+.cover {
+    height: 320px;
+    width: 400px;
+}
+
+.frameImg {
+    width: 100%;
+}
+
+.footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin: 4%;
+}
+
+.footerRight {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.footerLeft{
+    margin-left: 2%;
+}
+
+.column {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.column h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1B1A1A;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column li {
+    margin-bottom: 1rem;
+    color: #1B1A1A;
+    cursor: pointer;
+}
+.groupCheck{
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;
+}
+.price{
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #3A7ABD;
+}
+.pricePermonth{
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.iconGroup {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    bottom:-160px;
+}
+
+.plansContainer {
+    margin: 10px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.plans {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    /* border: 1px solid; */
+    /* width: 100%; */
+    /* height: 100%; */
+}
+
+.planCard {
+    padding: 0.4rem;
+    height: 450px;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 34%;
+    margin: 2% 2%;
+    padding: 3%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.planTitle {
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    color: #30404D;
+    padding-bottom: 10px;
+}
+
+.planSubTitle {
+    font-size: 16px;
+    width: 40vw;
+    text-align: center;
+    color: #30404D;
+    padding-bottom: 20px;
+    opacity: 0.8;
+}
+.planName{
+    font-size: 36px;
+    color: #30404D;
+}
+.planSub{
+    font-size: 20px;
+    opacity: 0.8;
+}
+/* .planInternal{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-direction: column; 
+} */
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20%;
+}
+.starterBtn{
+    width: 300px;
+    padding: 10px;
+    border-radius: 64px;
+    color: #244779;
+    border: 1px solid #244779;
+    cursor: pointer;
+}
+.platformTop{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.platformTitle{
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    width: 700px;
+    color: #30404D;
+}
+.platform{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 20px;
+
+}
+.platformSubtitle{
+    font-size: 18px;
+    text-align: center;
+    width: 750px;
+    color: #30404D;
+    opacity: 0.8;
+}
+.platformBody{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   height: 420px; 
+    margin-left: 4%;
+    box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.2);
+    width: 90vw;
+    margin:20px 0 ;
+}
+.platformBodyLeft, .platformBodyRight{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 0.4rem;
+    width: 500px;
+}
+.platformHeading{
+    font-size: 24px;
+    font-weight: bold;
+    color: #394B59;
+}
+.platformSubHeading{
+    font-size: 16px;
+    color: #394B59;
+    opacity: 0.8;
+}
+.platformHead{
+    font-size: 20px;
+    color: #394B59;
+}
+.platformHeading,.platformSubHeading,.platformHead{
+    margin-bottom: 10px;
+}
+
+.funnelContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin: 20px auto;
+  }
+  
+  .level {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin: 5px 0; */
+  }
+  
+  .funnelSegment {
+    width: 100%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    /* position: absolute; */
+  }
+  
+  .capture {
+    background-color: #63b3ed;
+  }
+  
+  .nurture {
+    background-color: #4299e1;
+    width: 70%;
+  }
+  
+  .close {
+    background-color: #2b6cb0;
+    width: 50%;
+  }
+  .captureText{
+    font-size: 10px;
+    position: relative;
+    bottom:160px;
+    left: 6px;
+  }
+  .nurtureText{
+    font-size: 10px;
+    position: relative;
+    bottom: 120px;
+    left: 6px;
+  }
+  .closeText{
+    font-size: 10px;
+    position: relative;
+    bottom: 80px;
+    left: 6px;
+  }
+  .captureLine{
+    position: relative;
+    bottom: 200px;
+    left: 90px;
+  }
+  .nurtureLine{
+    position: relative;
+    bottom:160px;
+    left: 90px;
+    width: 120px;
+  }
+  .closeLine{
+    position: relative;
+    bottom: 120px;
+    width: 150px;
+    left: 90px;
+  }
+  .social{
+    width: 90%;
+  }

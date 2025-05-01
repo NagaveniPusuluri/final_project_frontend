@@ -1,0 +1,60 @@
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+}
+.sidebarContainer{
+    height: 90vh;
+    width: 4%;
+    background-color: #FBFBFB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2%;
+    padding-bottom: 10%;
+    position: fixed;
+    border-right: 1px solid grey;
+}
+.sideBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 2%;
+}
+.sideImg{
+    width: 100%;
+    height: 100%;
+    /* margin: 20% 0; */
+}
+.sideBarImgContainer{
+    width: 60px;
+    height: 40px;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.sideBarImgContainerHead{
+    width: 40px;
+    height: 40px;
+    margin: 10%;
+}
+.iconBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.iconText{
+    font-size: 10px
+}
+.sideBarContainerBody{
+    margin-left: 6%;
+    padding-left: 1%;
+    height: 100%;
+}

@@ -1,0 +1,98 @@
+
+.main{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2%;
+    width: 100vw;
+    height: 100%;
+    overflow-y: scroll;
+}
+.mainBody{
+    overflow-y: scroll;
+}
+.searchBar{
+    background-color: #E7E7E7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 4% 0;
+    width: 240px;
+    padding: 1%;
+}
+.input{
+    margin: 4% 0;
+    padding: 0.4rem;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+}
+.heading{
+    color: #6A6B70;
+    font-size: 18px;
+    padding-bottom: 2%;
+}
+.line{
+    width: 90vw;
+    border: 1px solid #E7E7E7;
+}
+.button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.buttonOne{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.button:hover{  
+    border-bottom: 4px solid #184E7F; 
+}
+.iconHead{
+    display: flex;
+    align-items: center;
+}
+.iconHead:hover{   
+    border-bottom: 4px solid #184E7F; 
+}
+.cardHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    /* padding-bottom: 1%; */
+}
+
+.cardTop{
+    border: 1px solid #E7E7E7;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 2% 0;
+}
+.cardTopMain{
+    padding-left: 2%;
+}
+
+.cardBody{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+}
+.cardProfile{
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+}
+
+.profileDetails{
+    width: 180px;
+}
