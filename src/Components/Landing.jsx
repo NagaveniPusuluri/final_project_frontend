@@ -15,7 +15,7 @@ import company3 from '../assets/Company logo3.png';
 import company6 from '../assets/Company logo6.png';
 import company5 from '../assets/Company logo5.png';
 import chatbotBtn from '../assets/chatbotBtn.png';
-import ellipse from '../assets/Ellipse 6.png';
+import ellipse from '../assets/Ellipse6.png';
 import chatbotClose from '../assets/chatbotClose.png'
 import sendmsg from '../assets/sendmsg.png';
 import { postCustomer, postMessage, fetchBotDetails } from '../services';
