@@ -42,17 +42,17 @@ function Dashboard(props) {
 
     const filteredCustomers=customer.filter(cust =>{
         // const ticketNumber= generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
+        return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     })
 
     const filteredResolved = resolvedTickets.filter(cust => {
         // const ticketNumber = generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
+        return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     });
 
     const filteredUnresolved = unresolvedTickets.filter(cust => {
         // const ticketNumber = generateTicketNumber(cust.createdAt).toLowerCase();
-        return cust.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
+        return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     });
 
     // function generateTicketNumber(createdAt) {
@@ -104,7 +104,7 @@ function Dashboard(props) {
                                 <div className={styles.cardBody}>
                                     <h3>{cust?.ticketNo}</h3>
                                     <p>
-                                        {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
+                                        {new Date(Date.parse(cust?.messages?.[0]?.createdAt)).toLocaleTimeString(
                                             [],
                                             { hour: "2-digit", minute: "2-digit" }
                                         )}
@@ -113,8 +113,8 @@ function Dashboard(props) {
                                 {cust.messages?.length > 0 && (
 
                                     <div className={styles.cardBody} key={index}>
-                                        <p>{cust.messages[0]?.message}</p>
-                                        <p>  {Math.floor((new Date() - new Date(cust.createdAt)) / (1000 * 60 * 60))}:00</p>
+                                        <p>{cust?.messages[0]?.message}</p>
+                                        <p>  {Math.floor((new Date() - new Date(cust?.messages?.[0]?.createdAt)) / (1000 * 60 * 60))}:00</p>
                                     </div>
 
                                 )}
@@ -151,7 +151,7 @@ function Dashboard(props) {
                             <div className={styles.cardBody}>
                                 <h3>{cust?.ticketNo}</h3>
                                 <p>
-                                    {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
+                                    {new Date(Date.parse(cust?.messages?.[0]?.createdAt)).toLocaleTimeString(
                                         [],
                                         { hour: "2-digit", minute: "2-digit" }
                                     )}
@@ -160,8 +160,8 @@ function Dashboard(props) {
 
                             {cust.messages?.length >0 &&(
                                 <div className={styles.cardBody} >
-                                    <p>{cust.messages[0]?.message}</p>
-                                    <p>{Math.floor((new Date() - new Date(cust.messages[0].createdAt)) / (1000 * 60 * 60))}:00</p>
+                                    <p>{cust?.messages?.[0]?.message}</p>
+                                    <p>{Math.floor((new Date() - new Date(cust?.messages?.[0]?.createdAt)) / (1000 * 60 * 60))}:00</p>
                                 </div>
                             )}
                             </div>
@@ -194,7 +194,7 @@ function Dashboard(props) {
                             <div className={styles.cardBody}>
                                 <h3>{cust?.ticketNo}</h3>
                                 <p>
-                                    {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
+                                    {new Date(Date.parse(cust?.messages?.[0]?.createdAt)).toLocaleTimeString(
                                         [],
                                         { hour: "2-digit", minute: "2-digit" }
                                     )}
@@ -203,8 +203,8 @@ function Dashboard(props) {
 
                             {cust.messages?.length>0  &&  (
                                 <div className={styles.cardBody} >
-                                    <p>{cust.messages[0]?.message}</p>
-                                    <p>{Math.floor((new Date() - new Date(cust.messages[0].createdAt)) / (1000 * 60 * 60))}:00</p>
+                                    <p>{cust?.messages?.[0]?.message}</p>
+                                    <p>{Math.floor((new Date() - new Date(cust?.messages?.[0]?.createdAt)) / (1000 * 60 * 60))}:00</p>
                                 </div>
                             )}
                             </div>
