@@ -84,6 +84,7 @@ export async function postMessage(id,message){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({ id, message })
         })
@@ -131,7 +132,7 @@ export async function fetchCustomer ()  {
 
         
     } catch (err) {
-        console.log(err)
+        console.log(err.message)
     }
 }
 export async function fetchTeamMessages(storedUserId) {
@@ -146,6 +147,10 @@ export async function fetchTeamMessages(storedUserId) {
         const result = await response.json();
 
         console.log(result)
+        if (!response.ok) {
+            console.error("Error fetching team messages:", result.message || response.statusText);
+            return []; // return empty array to avoid filter crash
+        }
         return result;
 
     } catch (err) {
