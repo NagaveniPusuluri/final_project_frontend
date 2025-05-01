@@ -34,10 +34,10 @@ function Dashboard(props) {
 
    
     const resolvedTickets = customer.filter(cust => {
-        return cust.status === 'resolved';
+        return cust?.status === 'resolved';
     })
     const unresolvedTickets = customer.filter(cust => {
-        return cust.status === 'unresolved';
+        return cust?.status === 'unresolved';
     });
 
     const filteredCustomers=customer.filter(cust =>{
@@ -110,7 +110,7 @@ function Dashboard(props) {
                                         )}
                                     </p>
                                 </div>
-                                {cust.messages?.length > 0 && (
+                                {cust?.messages?.length > 0 && (
 
                                     <div className={styles.cardBody} key={index}>
                                         <p>{cust?.messages[0]?.message}</p>
