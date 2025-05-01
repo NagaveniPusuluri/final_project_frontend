@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import style from '../styles/chatbot.module.css'
-import ellipse from '../assets/ellipse 6.png'
+import ellipse from '../assets/ellipse6.png'
 import sendmsg from '../assets/sendmsg.png'
 import { ChatbotContext } from '../Context/ChatbotContext'
 

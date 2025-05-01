@@ -241,6 +241,9 @@ function Contact() {
         </div>
 
         <div className={styles.messageContainer}>
+
+       
+
           {selectedCustomer?.status === 'resolved' ? (
             ""
           ) : (selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
@@ -260,16 +263,20 @@ function Contact() {
                       {msg.sender === 'bot' ? 'Bot' : selectedCustomer.name}
                     </div>
                     <div className={styles.msgText}> {msg.message}</div>
+                    
                     </div>
+                    
                   </div>
+                  
             }))}
-
-                 
-                  {selectedCustomer?.isMissed === true ? (
+             {selectedCustomer?.isMissed === true ? (
                   <div className={styles.missedChatText}>
               Repying to missed chat
             </div>
           ) : null}
+
+                 
+                  
         </div>
 
         { selectedCustomer?.status === 'resolved' ? (
