@@ -182,7 +182,7 @@ function Contact() {
   }
 
   const missed = async (user) => {
-    const dateobj = user.ticketNo.slice(-8)
+    const dateobj = user?.ticketNo.slice(-8)
     const created = new Date(user.createdAt);
     const now = Date.now();
     const difference = now - created.getTime();
@@ -224,7 +224,7 @@ function Contact() {
       </div>
       <div className={styles.containerTwo}>
         <div className={styles.containerTop}>
-          <h2 className={styles.heading}>{selectedCustomer.ticketNo}</h2>
+          <h2 className={styles.heading}>{selectedCustomer?.ticketNo}</h2>
           <img src={home} alt='home' />
         </div>
         <div className={styles.containerBody}>
@@ -260,7 +260,7 @@ function Contact() {
                   <div className={styles.profileMsgBody}> 
                      <div className={`${msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}`}>
                       {/* {selectedCustomer.name} */}
-                      {msg.sender === 'bot' ? 'Bot' : selectedCustomer.name}
+                      {msg?.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
                     </div>
                     <div className={styles.msgText}> {msg.message}</div>
                     
@@ -310,20 +310,20 @@ function Contact() {
             <div className={styles.selectedContainer}>
               <div className={styles.detailsTop}>
                 <img src={profile} alt='profile' />
-                <h3 className={styles.chatMessage}>{selectedCustomer.name}</h3>
+                <h3 className={styles.chatMessage}>{selectedCustomer?.name}</h3>
               </div>
               <h2 className={styles.profileName}>Details</h2>
               <div className={styles.miniContainer}>
                 <img src={contact} alt='cust-name' />
-                <span className={styles.custDetail}>{selectedCustomer.name}</span>
+                <span className={styles.custDetail}>{selectedCustomer?.name}</span>
               </div>
               <div className={styles.miniContainer}>
                 <img src={phone} alt='cust-phone' />
-                <span className={styles.custDetail}>{selectedCustomer.phone}</span>
+                <span className={styles.custDetail}>{selectedCustomer?.phone}</span>
               </div>
               <div className={styles.miniContainer}>
                 <img src={email} alt='cust-email' />
-                <span className={styles.custDetail}>{selectedCustomer.email}</span>
+                <span className={styles.custDetail}>{selectedCustomer?.email}</span>
               </div>
             </div>
           ) : (<div>No messages</div>)}
@@ -344,7 +344,7 @@ function Contact() {
               >
                 <option value="" className={styles.subHeading} >Select a user</option>
 
-                {teamMembers.map((member, index) => (
+                {teamMembers?.map((member, index) => (
                   <option value={member._id} key={index}>
                     {member.username}
                   </option>
