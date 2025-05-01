@@ -19,9 +19,14 @@ function Dashboard(props) {
         setCustomer(res);
     }
     const fetchingTeamMegs=async()=>{
+        try{
         const res =await fetchTeamMessages(storedUserId);
         console.log(res);
-        setCustomer(res.data)
+        setCustomer(res?.data || []);
+        }catch(err){
+            console.log(err?.response?.data?.message || err.message);
+            setCustomer([]);
+        }
     }
     useEffect(() => {
         if (role === "admin") {
@@ -40,7 +45,7 @@ function Dashboard(props) {
         return cust?.status === 'unresolved';
     });
 
-    const filteredCustomers=customer.filter(cust =>{
+    const filteredCustomers=(customer || []).filter(cust =>{
         // const ticketNumber= generateTicketNumber(cust.createdAt).toLowerCase();
         return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     })
