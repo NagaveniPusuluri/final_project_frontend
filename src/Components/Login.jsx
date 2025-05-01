@@ -49,6 +49,7 @@ const Login = () => {
 
                                     <input type='email'
                                         name='username'
+                                         autocomplete='username'
                                         className={styles.input}
                                         required
                                         value={formData.username}
