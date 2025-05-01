@@ -27,7 +27,7 @@ function Team() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
-  const [dltModel, setDltModel] = useState(false)
+  const [dltModel, setDltModel] = useState(null)
   const role=localStorage.getItem("role");
   const handleDelete = async (id) => {
     try {
@@ -159,7 +159,7 @@ function Team() {
                   <img src={editIcon} alt='edit'/>
                 </button>
                 <button className={styles.deleteBtn}
-                  onClick={() => setDltModel(true)}
+                  onClick={() => setDltModel(mem._id)}
                 >
                   <img src={deleteIcon} alt='detele'/>
                 </button>
@@ -171,7 +171,7 @@ function Team() {
       <button
         className={styles.addBtn}
         onClick={() =>{ 
-          if(role!=='admin'){
+          if(role?.toLowerCase() !=='admin'){
             alert('Only admins can add the teammembers')
             return
           }
@@ -180,17 +180,19 @@ function Team() {
         }
       >Add Team members</button>
 
-      {dltModel && teamMembers.map((mem) => (
-        <div className={styles.deleteModel} key={mem._id}>
+      {dltModel &&  (
+        <div className={styles.deleteModel}>
           <h3 className={styles.heading}>This teammate will be deleted</h3>
           <div className={styles.btngroup}>
             <div className={styles.btngrouptwo}>
-              <button onClick={() => setDltModel(false)} className={styles.cancelBtntwo}>Cancel</button>
-              <button onClick={() => { handleDelete(mem._id) }} className={styles.confirmBtn}> confirm</button>
+              <button onClick={() => setDltModel(null)} className={styles.cancelBtntwo}>Cancel</button>
+              <button onClick={() => { handleDelete(dltModel)
+                setDltModel(null)
+               }} className={styles.confirmBtn}> confirm</button>
             </div>
           </div>
         </div>
-      ))}
+      )}
 
       {showModel && (
         <div className={styles.modal}>
