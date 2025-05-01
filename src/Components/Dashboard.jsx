@@ -6,7 +6,7 @@ import search from '../assets/search.png';
 import { fetchBotDetails,fetchCustomer, fetchTeamDetails,fetchTeamMessages } from '../services';
 
 function Dashboard(props) {
-    const [customer, setCustomer] = useState([]);
+    const [customer, setCustomer] = useState(null);
     const [activeTab, setActiveTab] = useState('all');
     const [searchTicket,setSearchTicket]=useState('');
     const storedUserId = localStorage.getItem("userId");
@@ -102,7 +102,7 @@ function Dashboard(props) {
                             <div className={styles.cardTop}>
                                 <div className={styles.cardTopMain}>
                                 <div className={styles.cardBody}>
-                                    <h3>{cust.ticketNo}</h3>
+                                    <h3>{cust?.ticketNo}</h3>
                                     <p>
                                         {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
                                             [],
@@ -149,7 +149,7 @@ function Dashboard(props) {
                         <div className={styles.cardTop}>
                             <div className={styles.cardTopMain}>
                             <div className={styles.cardBody}>
-                                <h3>{cust.ticketNo}</h3>
+                                <h3>{cust?.ticketNo}</h3>
                                 <p>
                                     {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
                                         [],
@@ -192,7 +192,7 @@ function Dashboard(props) {
                         <div className={styles.cardTop}>
                             <div className={styles.cardTopMain}>
                             <div className={styles.cardBody}>
-                                <h3>{cust.ticketNo}</h3>
+                                <h3>{cust?.ticketNo}</h3>
                                 <p>
                                     {new Date(Date.parse(cust.createdAt)).toLocaleTimeString(
                                         [],
