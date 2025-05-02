@@ -228,7 +228,7 @@ function Contact() {
             </div>
           </div>
         ))
-      ):(<p>No chats available</p>)}
+      ):(<p className={styles.subHeading}>Loading...</p>)}
       </div>
       <div className={styles.containerTwo}>
         <div className={styles.containerTop}>
