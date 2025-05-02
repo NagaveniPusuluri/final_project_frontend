@@ -93,7 +93,7 @@ function Contact() {
       await fetchingTeamMembers(storedUserId);
     }
     init();
-  }, [])
+  }, [role,storedUserId]);
 
   const handleChange = (e) => {
     setMessage(prev => ({
@@ -102,7 +102,7 @@ function Contact() {
     }))
   }
   const handleSend = async () => {
-    if (message.message.trim() === "" || !selectedCustomer) return;
+    if (!message.message.trim() || !selectedCustomer) return;
     console.log(message);
 
     try {
@@ -141,8 +141,9 @@ function Contact() {
 
   const handleStatusChange = async (e) => {
     const modifiedStatus = e.target.value;
+    if(!selectedCustomer) return;
     try {
-      if (!selectedCustomer) return
+      // if (!selectedCustomer) return
       const res = await fetch(`${url}/customer/${selectedCustomer._id}`, {
         method: 'PUT',
         headers: {
@@ -161,6 +162,7 @@ function Contact() {
   }
 
   const handleTeam = async () => {
+    if (!assignedTo || !selectedCustomer) return;
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
@@ -191,13 +193,13 @@ function Contact() {
       console.log(response)
     }
     else if (user.isMissed === true) {
-      console.log('already marked as missed')
+      console.log('Marked as missed chat')
     }
     else {
-      console.log('not missed chat')
+      console.log('Not missed chat')
     }
     console.log(`Difference: ${difference} ms`);
-    console.log(`missed chat timer: ${missedChatTimer} ms`)
+    console.log(`Missed chat timer: ${missedChatTimer} ms`)
     console.log(dateobj)
   }
 
@@ -207,7 +209,8 @@ function Contact() {
         <h3 className={styles.heading}>contact center</h3>
         <h5 className={styles.subHeading}>chats</h5>
         <hr className={styles.line} />
-        {Array.isArray(details) && details.map((item, index) => (
+        {Array.isArray(details) && details.length >0 ?(
+        details.map((item, index) => (
           <div className={`${styles.chatContainer} ${selectedCustomer?._id === item._id ? styles.activeChat : ''}`} key={index}
             onClick={() => {
               missed(item);
@@ -217,10 +220,11 @@ function Contact() {
             <img src={profile} alt='profile' />
             <div className={styles.profileBody}>
               <div className={styles.profileName}>{item.name}</div>
-              <div className={styles.chatMessage}>{item.messages?.[0]?.message || "No messages"}</div>
+              <div className={styles.chatMessage}>{item.messages?.at(-1)?.message || "No messages"}</div>
             </div>
           </div>
-        ))}
+        ))
+      ):(<p>No chats available</p>)}
       </div>
       <div className={styles.containerTwo}>
         <div className={styles.containerTop}>
@@ -242,7 +246,7 @@ function Contact() {
 
         <div className={styles.messageContainer}>
 
-       
+{/*        
 
           {selectedCustomer?.status === 'resolved' ? (
             ""
@@ -259,8 +263,8 @@ function Contact() {
                   <img src={profile} alt='profile'  className={styles.profilePic}/>
                   <div className={styles.profileMsgBody}> 
                      <div className={`${msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}`}>
-                      {/* {selectedCustomer.name} */}
-                      {msg?.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
+                      {/* {selectedCustomer.name} 
+                      {msg.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
                     </div>
                     <div className={styles.msgText}> {msg.message}</div>
                     
@@ -301,7 +305,45 @@ function Contact() {
                   <img src={send} alt='send' className={styles.sendIcon} onClick={handleSend} />
                 </div>
               )
-        }
+        } */}
+        {selectedCustomer?.messages?.map((msg, index) => (
+            <div
+              key={index}
+              className={`${styles.messageBubble} ${msg.sender === 'bot' ? styles.botMessage : styles.custMessage}`}
+            >
+              <img src={profile} alt="profile" className={styles.profilePic} />
+              <div className={styles.profileMsgBody}>
+                <div className={msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}>
+                  {msg.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
+                </div>
+                <div className={styles.msgText}>{msg.message}</div>
+              </div>
+            </div>
+          ))}
+          {selectedCustomer?.isMissed && (
+            <div className={styles.missedChatText}>Replying to missed chat</div>
+          )}
+        </div>
+
+        {selectedCustomer?.status === 'resolved' ? (
+          <div className={styles.resolvedText}>This chat has been resolved</div>
+        ) : selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId ? (
+          <div className={styles.resolvedText}>
+            This chat is assigned to a different team member. You no longer have access.
+          </div>
+        ) : (
+          <div className={styles.searchContainer}>
+            <textarea
+              placeholder="Type here"
+              rows={2}
+              value={message.message}
+              className={styles.sendMsg}
+              onChange={handleChange}
+              disabled={sending}
+            />
+            <img src={send} alt="send" className={styles.sendIcon} onClick={handleSend} />
+          </div>
+        )}
 
       </div>
       <div className={styles.containerThree}>
@@ -344,7 +386,7 @@ function Contact() {
               >
                 <option value="" className={styles.subHeading} >Select a user</option>
 
-                {Array.isArray(teamMembers) && teamMembers?.map((member, index) => (
+                { teamMembers.map((member, index) => (
                   <option value={member._id} key={index}>
                     {member.username}
                   </option>
@@ -368,8 +410,7 @@ function Contact() {
                 </div>
               </div>
             </div>
-            {
-              onClickTeamMember && (
+            { onClickTeamMember && (
                 <div className={styles.modelTeamContainer}>
                   <h3 className={styles.modelText}>Chat would be assigned to Different team member  </h3>
                   <div className={styles.modelBtn}>

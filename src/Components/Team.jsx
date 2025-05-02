@@ -40,6 +40,7 @@ function Team() {
       });
       setDltModel(false);
       fetchTeamDetails();
+
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -62,8 +63,12 @@ function Team() {
   }
 
 
-  const fetchTeamDetails = async () => {
+  const fetchTeamDetails = async (storedUserId) => {
     console.log(storedUserId)
+    if(!token){
+      console.log("No auth token found");
+      return;
+    }
     try {
       const res = await fetch(`${url}/user/add-teammembers/${storedUserId}`, {
         method: 'GET',
@@ -72,14 +77,23 @@ function Team() {
           'Authorization':`Bearer ${token}`
         }
       })
-      const text = await res.text();
-      const data = JSON.parse(text);
-      setTeamMembers(data);
-      setTeamMembers(data);
-      console.log(data);
-    }
+      if(!res.ok){
+        const errorText =await res.text();
+        console.log(errorText);
+        setTeamMembers([]);
+        return;
+      }
+      // const text = await res.text();
+      const data = await res.json();
+      if(Array.isArray(data)){
+        setTeamMembers(data);
+            console.log(data);
+      }else{
+        setTeamMembers([]);
+    }}
     catch (err) {
-      console.log(err)
+      console.log(err.message);
+      setTeamMembers([]);
     }
   }
 
@@ -159,7 +173,7 @@ function Team() {
                   <img src={editIcon} alt='edit'/>
                 </button>
                 <button className={styles.deleteBtn}
-                  onClick={() => setDltModel(mem._id)}
+                  onClick={() => setDltModel(member._id)}
                 >
                   <img src={deleteIcon} alt='detele'/>
                 </button>
