@@ -170,7 +170,7 @@ function Contact() {
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
