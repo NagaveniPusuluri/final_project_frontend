@@ -14,15 +14,23 @@ function Dashboard(props) {
     
 
     const fetchingCust=async()=>{
+        try{
         const res= await fetchCustomer();
+        console.log("fetch customer")
         console.log(res);
-        setCustomer(res?.data || []);
+        setCustomer(res.data);
+        }catch(err){
+            if(err.response?.status === 401){
+                localStorage.clear();
+                window.location.href="/login";
+            }
+        }
     }
     const fetchingTeamMegs=async()=>{
         try{
         const res =await fetchTeamMessages(storedUserId);
         console.log(res);
-        setCustomer(res?.data || []);
+        setCustomer(res.data);
         }catch(err){
             console.log(err?.response?.data?.message || err.message);
             setCustomer([]);
@@ -38,14 +46,14 @@ function Dashboard(props) {
     }, [])
 
    
-    const resolvedTickets = customer.filter(cust => {
+    const resolvedTickets = (customer || []).filter(cust => {
         return cust?.status === 'resolved';
     })
-    const unresolvedTickets = customer.filter(cust => {
+    const unresolvedTickets = (customer || []).filter(cust => {
         return cust?.status === 'unresolved';
     });
 
-    const filteredCustomers=customer.filter(cust =>{
+    const filteredCustomers=(customer || []).filter(cust =>{
         // const ticketNumber= generateTicketNumber(cust.createdAt).toLowerCase();
         return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     })
