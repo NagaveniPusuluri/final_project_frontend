@@ -138,10 +138,13 @@ export async function fetchCustomer ()  {
                 'Authorization':`Bearer ${token}`
             }
         })
+        if (!res.ok) {
+            console.error("Failed to fetch customer data:", response.statusText);
+            return [];  // Returning an empty array if error
+        }
         const data = await res.json();
         console.log(data);
-        return data || [];
-
+        return data;
         
     } catch (err) {
         console.log(err.message);
@@ -159,13 +162,13 @@ export async function fetchTeamMessages(storedUserId) {
                 'Authorization':`Bearer ${token}`
             }
         });
-        const result = await response.json();
-
-        console.log(result)
         if (!response.ok) {
             console.error("Error fetching team messages:", result.message || response.statusText);
             return []; // return empty array to avoid filter crash
         }
+        
+        const result = await response.json();
+        console.log(result)
         return result;
 
     } catch (err) {

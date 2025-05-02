@@ -63,6 +63,7 @@ function Contact() {
   }
 
   const fetchingTeamMegs = async () => {
+    try{
     const res = await fetchTeamMessages(storedUserId);
     console.log(res);
     setDetails(res.data)
@@ -77,7 +78,10 @@ function Contact() {
         setSelectedCustomer(parsedStored);
       }
     }
+  }catch(err){
+    console.log(err.message)
   }
+}
 
   const fetchingTeamMembers = async () => {
     const res = await fetchTeamDetails(storedUserId);
@@ -213,6 +217,7 @@ function Contact() {
     console.log(`Missed chat timer: ${missedChatTimer} ms`)
     console.log(dateobj)
   }
+
 
   return (
     <div className={styles.mainContainer}>

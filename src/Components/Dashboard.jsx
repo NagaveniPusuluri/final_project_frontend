@@ -20,7 +20,7 @@ function Dashboard(props) {
         console.log(res);
         setCustomer(res);
         }catch(err){
-            if(err.response?.status === 401){
+            if(err.res?.status === 401){
                 localStorage.clear();
                 window.location.href="/login";
             }
@@ -29,10 +29,9 @@ function Dashboard(props) {
     const fetchingTeamMegs=async()=>{
         try{
         const res =await fetchTeamMessages(storedUserId);
-        console.log(res);
-        setCustomer(res.data);
+        setCustomer(res?.data);
         }catch(err){
-            console.log(err?.response?.data?.message || err.message);
+            console.log(err?.res?.data?.message || err.message);
             setCustomer([]);
         }
     }
@@ -43,7 +42,7 @@ function Dashboard(props) {
         }
         fetchingTeamMegs();
 
-    }, [])
+    }, [role]);
 
    
     const resolvedTickets = (customer || []).filter(cust => {
