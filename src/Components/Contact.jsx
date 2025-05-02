@@ -170,7 +170,7 @@ function Contact() {
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -183,7 +183,7 @@ function Contact() {
       setOnClickTeamMember(false);
 
     } catch (err) {
-      console.log(err)
+      console.log(err.message)
     }
   }
 
@@ -331,7 +331,7 @@ function Contact() {
 
         {selectedCustomer?.status === 'resolved' ? (
           <div className={styles.resolvedText}>This chat has been resolved</div>
-        ) : selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId ? (
+        ) :( selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
           <div className={styles.resolvedText}>
             This chat is assigned to a different team member. You no longer have access.
           </div>

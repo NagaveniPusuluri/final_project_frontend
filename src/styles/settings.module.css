@@ -47,4 +47,5 @@ overflow-y: scroll;
     border: none;
     border-radius: 64px;
     margin-left: 80%;
+    cursor: pointer;
 }
