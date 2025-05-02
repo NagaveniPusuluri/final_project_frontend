@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/team.module.css';
 import editIcon from '../assets/edit.png';
 import deleteIcon from '../assets/delete.png';
+// import { deleteModel } from 'mongoose';
 const url = import.meta.env.VITE_BACKEND_URL;
 function Team() {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -27,7 +28,7 @@ function Team() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
-  const [dltModel, setDltModel] = useState(null)
+  const [dltModel, setDltModel] = useState(false);
   const role=localStorage.getItem("role");
   const handleDelete = async (id) => {
     const token=localStorage.getItem("authToken");
@@ -39,15 +40,15 @@ function Team() {
           'Authorization':`Bearer ${token}`
         },
       });
+     
       setDltModel(false);
       fetchTeamDetails();
-
       console.log(response);
     } catch (error) {
       console.log(error);
     }
     setTeamMembers((prevMembers) => prevMembers.filter((mem) => mem._id !== id));
-    fetchTeamDetails();
+    // fetchTeamDetails();
   };
 
   const handleEdit = (member) => {
@@ -64,7 +65,7 @@ function Team() {
   }
 
 
-  const fetchTeamDetails = async (storedUserId) => {
+  const fetchTeamDetails = async () => {
     console.log(storedUserId)
     const token=localStorage.getItem("authToken");
     if(!token){
@@ -102,7 +103,7 @@ function Team() {
   useEffect(() => {
 
     console.log(storedUserId);
-    fetchTeamDetails(storedUserId);
+    fetchTeamDetails();
   }, [])
 
   const handleSubmit = async (e) => {
@@ -127,7 +128,7 @@ function Team() {
         console.log(updated);
         setNewTeamMember({ username: '', phone: '', email: '',password:'', role: '', createdBy: storedUserId });
         setShowModel(false);
-        fetchTeamDetails();
+        // fetchTeamDetails();
       } else {
         const response = await fetch(`${url}/user/add-teammembers`, {
           method: 'POST',
@@ -176,7 +177,8 @@ function Team() {
                   <img src={editIcon} alt='edit'/>
                 </button>
                 <button className={styles.deleteBtn}
-                  onClick={() => setDltModel(member._id)}
+                  onClick={() => 
+                    setDltModel(member._id)}
                 >
                   <img src={deleteIcon} alt='detele'/>
                 </button>
@@ -204,7 +206,7 @@ function Team() {
             <div className={styles.btngrouptwo}>
               <button onClick={() => setDltModel(null)} className={styles.cancelBtntwo}>Cancel</button>
               <button onClick={() => { handleDelete(dltModel)
-                setDltModel(null)
+                 setDltModel(null)
                }} className={styles.confirmBtn}> confirm</button>
             </div>
           </div>

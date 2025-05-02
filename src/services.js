@@ -125,25 +125,32 @@ export async function fetchBotDetails (id) {
 
 export async function fetchCustomer ()  {
     const token=localStorage.getItem("authToken");
+    if (!token) {
+        console.log("No token found");
+        return [];
+    }
+
     try {
         const res = await fetch(`${url}/customer`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization':`Bearer ${token}`
+                'Authorization':`Bearer ${token}`
             }
         })
         const data = await res.json();
         console.log(data);
-        return data
+        return data || [];
 
         
     } catch (err) {
-        console.log(err.message)
+        console.log(err.message);
+        return [];
     }
 }
 export async function fetchTeamMessages(storedUserId) {
     const token=localStorage.getItem("authToken");
+    console.log("token",token)
     try {
         const response = await fetch(`${url}/customer/teammember/messages/${storedUserId}`, {
             method: 'GET',
@@ -181,7 +188,7 @@ export async function fetchTeamDetails(storedUserId) {
       return data;
     }
     catch (err) {
-      console.log(err)
+      console.log(err.message)
     }
   }
 

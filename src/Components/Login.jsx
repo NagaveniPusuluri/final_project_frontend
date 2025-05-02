@@ -49,7 +49,7 @@ const Login = () => {
 
                                     <input type='email'
                                         name='username'
-                                         autocomplete='username'
+                                         autoComplete='username'
                                         className={styles.input}
                                         required
                                         value={formData.username}
@@ -60,7 +60,7 @@ const Login = () => {
 
                                     <input type='password'
                                         name='password'
-                                        autocomplete='current-password'
+                                        autoComplete='current-password'
                                         className={styles.input}
                                         required
                                         value={formData.password}

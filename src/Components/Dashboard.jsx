@@ -18,7 +18,7 @@ function Dashboard(props) {
         const res= await fetchCustomer();
         console.log("fetch customer")
         console.log(res);
-        setCustomer(res.data);
+        setCustomer(res);
         }catch(err){
             if(err.response?.status === 401){
                 localStorage.clear();
