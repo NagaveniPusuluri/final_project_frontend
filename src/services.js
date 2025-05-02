@@ -1,7 +1,8 @@
 const url = import.meta.env.VITE_BACKEND_URL;
 
-const token=localStorage.getItem("authToken");
 const login = async (formData) => {
+    const token=localStorage.getItem("authToken");
+
     try {
         const response = await fetch(`${url}/user/login`, {
             method: 'POST',
@@ -25,6 +26,7 @@ const login = async (formData) => {
 }
 
 export async  function signup (formData){
+    const token=localStorage.getItem("authToken");
     try{
         const response=await fetch( `${url}/user/signup`,{
             method: 'POST',
@@ -44,6 +46,7 @@ export async  function signup (formData){
 }
 
 export async function settings(formData, userId) {
+    const token=localStorage.getItem("authToken");
     try {
         const response = await fetch(`${url}/user/update/${userId}`, {
           method: 'PUT',
@@ -61,6 +64,7 @@ export async function settings(formData, userId) {
 }
 
 export async function postCustomer(formData) {
+    const token=localStorage.getItem("authToken");
     try {
         const response = await fetch(`${url}/customer/`, {
             method: 'POST',
@@ -79,6 +83,7 @@ export async function postCustomer(formData) {
 }
 
 export async function postMessage(id,message){
+    const token=localStorage.getItem("authToken");
     try {
         const response = await fetch(`${url}/customer/add-message`, {
             method: 'POST',
@@ -98,6 +103,7 @@ export async function postMessage(id,message){
 }
 
 export async function fetchBotDetails (id) {
+    const token=localStorage.getItem("authToken");
     try {
         const res = await fetch(`${url}/customer`,{
             method: "GET",
@@ -118,6 +124,7 @@ export async function fetchBotDetails (id) {
 }
 
 export async function fetchCustomer ()  {
+    const token=localStorage.getItem("authToken");
     try {
         const res = await fetch(`${url}/customer`, {
             method: 'GET',
@@ -136,6 +143,7 @@ export async function fetchCustomer ()  {
     }
 }
 export async function fetchTeamMessages(storedUserId) {
+    const token=localStorage.getItem("authToken");
     try {
         const response = await fetch(`${url}/customer/teammember/messages/${storedUserId}`, {
             method: 'GET',
@@ -159,6 +167,7 @@ export async function fetchTeamMessages(storedUserId) {
 }
 
 export async function fetchTeamDetails(storedUserId) {
+    const token=localStorage.getItem("authToken");
     try {
       const res = await fetch(`${url}/user/add-teammembers/${storedUserId}`, {
         method: 'GET',
@@ -168,9 +177,8 @@ export async function fetchTeamDetails(storedUserId) {
         }
       })
       const data = await res.json()
-      return data;
-    //   setTeamMembers(data);
       console.log(data);
+      return data;
     }
     catch (err) {
       console.log(err)
@@ -178,6 +186,7 @@ export async function fetchTeamDetails(storedUserId) {
   }
 
 export async function updateMissedChat(id,day) {
+    const token=localStorage.getItem("authToken");
     try{
         const res=await fetch(`${url}/customer/update-missed`,{
             method:'POST',
@@ -196,6 +205,7 @@ export async function updateMissedChat(id,day) {
 }  
 
 export async function fetchMissedChats(){
+    const token=localStorage.getItem("authToken");
     try{
         const res=await fetch (`${url}/customer/get-missed-chats`,{
             method:'GET',

@@ -30,6 +30,7 @@ function Team() {
   const [dltModel, setDltModel] = useState(null)
   const role=localStorage.getItem("role");
   const handleDelete = async (id) => {
+    const token=localStorage.getItem("authToken");
     try {
       const response = await fetch(`${url}/user/add-teammembers/${id}`, {
         method: 'DELETE',
@@ -65,6 +66,7 @@ function Team() {
 
   const fetchTeamDetails = async (storedUserId) => {
     console.log(storedUserId)
+    const token=localStorage.getItem("authToken");
     if(!token){
       console.log("No auth token found");
       return;
@@ -105,6 +107,7 @@ function Team() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token=localStorage.getItem("authToken");
     try {
       if (isEditing) {
         const response = await fetch(`${url}/user/add-teammembers/${editId}`, {

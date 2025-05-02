@@ -143,10 +143,10 @@ function Contact() {
   };
 
   const handleStatusChange = async (e) => {
+    const token=localStorage.getItem("authToken");
     const modifiedStatus = e.target.value;
     if(!selectedCustomer) return;
     try {
-      // if (!selectedCustomer) return
       const res = await fetch(`${url}/customer/${selectedCustomer._id}`, {
         method: 'PUT',
         headers: {
@@ -165,6 +165,7 @@ function Contact() {
   }
 
   const handleTeam = async () => {
+    const token=localStorage.getItem("authToken");
     if (!assignedTo || !selectedCustomer) return;
 
     try {
