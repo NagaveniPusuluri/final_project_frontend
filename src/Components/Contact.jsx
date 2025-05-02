@@ -12,6 +12,7 @@ import { fetchCustomer, fetchTeamMessages, fetchTeamDetails, updateMissedChat } 
 import { ChatbotContext } from '../Context/ChatbotContext'
 
 
+
 function Contact() {
 
   const [message, setMessage] = useState({
@@ -19,6 +20,8 @@ function Contact() {
     sender: 'bot',
     receiver: 'customer'
   });
+  const [sending, setSending] = useState(false); 
+
 
   const { missedChatTimer, setMissedChatTimer
   } = useContext(ChatbotContext);

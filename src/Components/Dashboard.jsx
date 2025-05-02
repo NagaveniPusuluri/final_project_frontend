@@ -38,14 +38,14 @@ function Dashboard(props) {
     }, [])
 
    
-    const resolvedTickets = (customer || []).filter(cust => {
+    const resolvedTickets = customer.filter(cust => {
         return cust?.status === 'resolved';
     })
-    const unresolvedTickets = (customer|| []).filter(cust => {
+    const unresolvedTickets = customer.filter(cust => {
         return cust?.status === 'unresolved';
     });
 
-    const filteredCustomers=(customer || []).filter(cust =>{
+    const filteredCustomers=customer.filter(cust =>{
         // const ticketNumber= generateTicketNumber(cust.createdAt).toLowerCase();
         return cust?.ticketNo?.toLowerCase().includes(searchTicket.toLowerCase());
     })
