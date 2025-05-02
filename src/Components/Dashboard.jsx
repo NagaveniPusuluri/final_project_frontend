@@ -16,7 +16,7 @@ function Dashboard(props) {
     const fetchingCust=async()=>{
         const res= await fetchCustomer();
         console.log(res);
-        setCustomer(res);
+        setCustomer(res?.data || []);
     }
     const fetchingTeamMegs=async()=>{
         try{
