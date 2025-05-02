@@ -26,7 +26,7 @@ export const ChatbotProvider = ({ children }) => {
   const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem('selectedBodyColor') ||'#ffffff');
   const [customMessage1, setCustomMessage1] = useState(localStorage.getItem('customMsg1')|| 'How can i help you?');
   const [customMessage2, setCustomMessage2] = useState(localStorage.getItem('customMsg2')|| 'Ask me anything!');
-  const [missedChatTimer,setMissedChatTimer]=useState(localStorage.getItem("missedChatTimer")|| null);
+  const [missedChatTimer,setMissedChatTimer]=useState(localStorage.getItem("missedChatTimer")|| 3600000);
 
   return (
     <ChatbotContext.Provider value={{

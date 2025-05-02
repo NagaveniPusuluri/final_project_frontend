@@ -20,7 +20,7 @@ function Contact() {
     sender: 'bot',
     receiver: 'customer'
   });
-  const [sending, setSending] = useState(false); 
+  const [sending, setSending] = useState(false);
 
 
   const { missedChatTimer, setMissedChatTimer
@@ -82,7 +82,7 @@ function Contact() {
   const fetchingTeamMembers = async () => {
     const res = await fetchTeamDetails(storedUserId);
     console.log(res);
-    setTeamMembers(Array.isArray(res)?res:[]);
+    setTeamMembers(Array.isArray(res) ? res : []);
   }
 
   useEffect(() => {
@@ -96,7 +96,7 @@ function Contact() {
       await fetchingTeamMembers(storedUserId);
     }
     init();
-  }, [role,storedUserId]);
+  }, [role, storedUserId]);
 
   const handleChange = (e) => {
     setMessage(prev => ({
@@ -143,9 +143,9 @@ function Contact() {
   };
 
   const handleStatusChange = async (e) => {
-    const token=localStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken");
     const modifiedStatus = e.target.value;
-    if(!selectedCustomer) return;
+    if (!selectedCustomer) return;
     try {
       const res = await fetch(`${url}/customer/${selectedCustomer._id}`, {
         method: 'PUT',
@@ -165,12 +165,12 @@ function Contact() {
   }
 
   const handleTeam = async () => {
-    const token=localStorage.getItem("authToken");
-    if (!assignedTo || !selectedCustomer){
+    const token = localStorage.getItem("authToken");
+    if (!assignedTo || !selectedCustomer) {
       // console.log("data")
-       return;
+      return;
     }
-  
+
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
@@ -187,7 +187,7 @@ function Contact() {
       setOnClickTeamMember(false);
       setSelectedCustomer(data.assignedChat);
       console.log(data.assignedChat)
-      localStorage.setItem("active_chat",JSON.stringify(data.assignedChat));
+      localStorage.setItem("active_chat", JSON.stringify(data.assignedChat));
 
     } catch (err) {
       console.log(err.message)
@@ -220,22 +220,22 @@ function Contact() {
         <h3 className={styles.heading}>contact center</h3>
         <h5 className={styles.subHeading}>chats</h5>
         <hr className={styles.line} />
-        {Array.isArray(details) && details.length >0 ?(
-        details.map((item, index) => (
-          <div className={`${styles.chatContainer} ${selectedCustomer?._id === item._id ? styles.activeChat : ''}`} key={index}
-            onClick={() => {
-              missed(item);
-              setSelectedCustomer(item)
-              localStorage.setItem("active_chat", JSON.stringify(item))
-            }}>
-            <img src={profile} alt='profile' />
-            <div className={styles.profileBody}>
-              <div className={styles.profileName}>{item.name}</div>
-              <div className={styles.chatMessage}>{item.messages?.at(-1)?.message || "No messages"}</div>
+        {Array.isArray(details) && details.length > 0 ? (
+          details.map((item, index) => (
+            <div className={`${styles.chatContainer} ${selectedCustomer?._id === item._id ? styles.activeChat : ''}`} key={index}
+              onClick={() => {
+                missed(item);
+                setSelectedCustomer(item)
+                localStorage.setItem("active_chat", JSON.stringify(item))
+              }}>
+              <img src={profile} alt='profile' />
+              <div className={styles.profileBody}>
+                <div className={styles.profileName}>{item.name}</div>
+                <div className={styles.chatMessage}>{item.messages?.at(-1)?.message || "No messages"}</div>
+              </div>
             </div>
-          </div>
-        ))
-      ):(<p className={styles.subHeading}>Loading...</p>)}
+          ))
+        ) : (<p className={styles.subHeading}>Loading...</p>)}
       </div>
       <div className={styles.containerTwo}>
         <div className={styles.containerTop}>
@@ -257,80 +257,22 @@ function Contact() {
 
         <div className={styles.messageContainer}>
 
-{/*        
-
-          {selectedCustomer?.status === 'resolved' ? (
-            ""
-          ) : (selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
-            ""
-          )
-            : (
-              selectedCustomer?.messages?.map((msg, index) => {
-                return <div
-                  key={index}
-                  className={`${styles.messageBubble} ${msg.sender === 'bot' ? styles.botMessage : styles.custMessage
-                    }`}
-                >
-                  <img src={profile} alt='profile'  className={styles.profilePic}/>
-                  <div className={styles.profileMsgBody}> 
-                     <div className={`${msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}`}>
-                      {/* {selectedCustomer.name} 
-                      {msg.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
-                    </div>
-                    <div className={styles.msgText}> {msg.message}</div>
-                    
-                    </div>
-                    
+          {selectedCustomer?.status !== 'resolved' &&
+            (!selectedCustomer.assignedTo || selectedCustomer.assignedTo === storedUserId
+            ) && selectedCustomer?.messages?.map((msg, index) => (
+              <div
+                key={index}
+                className={`${styles.messageBubble} ${msg.sender === 'bot' ? styles.botMessage : styles.custMessage}`}
+              >
+                <img src={profile} alt="profile" className={styles.profilePic} />
+                <div className={styles.profileMsgBody}>
+                  <div className={msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}>
+                    {msg.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
                   </div>
-                  
-            }))}
-             {selectedCustomer?.isMissed === true ? (
-                  <div className={styles.missedChatText}>
-              Repying to missed chat
-            </div>
-          ) : null}
-
-                 
-                  
-        </div>
-
-        { selectedCustomer?.status === 'resolved' ? (
-            <div className={styles.resolvedText}>
-              This chat has been resolved
-            </div>
-          ) :
-            (selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
-              <div className={styles.resolvedText}>
-                This chat is assigned to new team member. you no longer have access
-              </div>
-            )
-              : (
-                <div className={styles.searchContainer}>
-                  <textarea
-                    placeholder="Type here"
-                    rows={2}
-                    value={message.message}
-                    className={styles.sendMsg}
-                    onChange={handleChange}
-                  ></textarea>
-                  <img src={send} alt='send' className={styles.sendIcon} onClick={handleSend} />
+                  <div className={styles.msgText}>{msg.message}</div>
                 </div>
-              )
-        } */}
-        {selectedCustomer?.messages?.map((msg, index) => (
-            <div
-              key={index}
-              className={`${styles.messageBubble} ${msg.sender === 'bot' ? styles.botMessage : styles.custMessage}`}
-            >
-              <img src={profile} alt="profile" className={styles.profilePic} />
-              <div className={styles.profileMsgBody}>
-                <div className={msg.sender === 'bot' ? styles.botProfileName : styles.custProfileName}>
-                  {msg.sender === 'bot' ? 'Bot' : selectedCustomer?.name}
-                </div>
-                <div className={styles.msgText}>{msg.message}</div>
               </div>
-            </div>
-          ))}
+            ))}
           {selectedCustomer?.isMissed && (
             <div className={styles.missedChatText}>Replying to missed chat</div>
           )}
@@ -338,7 +280,7 @@ function Contact() {
 
         {selectedCustomer?.status === 'resolved' ? (
           <div className={styles.resolvedText}>This chat has been resolved</div>
-        ) :( selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
+        ) : (selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
           <div className={styles.resolvedText}>
             This chat is assigned to a different team member.You no longer have access.
           </div>
@@ -397,7 +339,7 @@ function Contact() {
               >
                 <option value="" className={styles.subHeading} >Select a user</option>
 
-                { teamMembers.map((member, index) => (
+                {teamMembers.map((member, index) => (
                   <option value={member._id} key={index}>
                     {member.username}
                   </option>
@@ -421,15 +363,15 @@ function Contact() {
                 </div>
               </div>
             </div>
-            { onClickTeamMember && (
-                <div className={styles.modelTeamContainer}>
-                  <h3 className={styles.modelText}>Chat would be assigned to Different team member  </h3>
-                  <div className={styles.modelBtn}>
-                    <button onClick={() => setOnClickTeamMember(false)} className={styles.cancel}>Cancel</button>
-                    <button onClick={() => { handleTeam() }} className={styles.confirm}>Confirm</button>
-                  </div>
+            {onClickTeamMember && (
+              <div className={styles.modelTeamContainer}>
+                <h3 className={styles.modelText}>Chat would be assigned to Different team member  </h3>
+                <div className={styles.modelBtn}>
+                  <button onClick={() => setOnClickTeamMember(false)} className={styles.cancel}>Cancel</button>
+                  <button onClick={() => { handleTeam() }} className={styles.confirm}>Confirm</button>
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
       </div >
