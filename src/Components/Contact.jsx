@@ -166,7 +166,11 @@ function Contact() {
 
   const handleTeam = async () => {
     const token=localStorage.getItem("authToken");
-    if (!assignedTo || !selectedCustomer) return;
+    if (!assignedTo || !selectedCustomer){
+      // console.log("data")
+       return;
+    }
+  
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
@@ -181,6 +185,9 @@ function Contact() {
 
       console.log(data);
       setOnClickTeamMember(false);
+      setSelectedCustomer(data.assignedChat);
+      console.log(data.assignedChat)
+      localStorage.setItem("active_chat",JSON.stringify(data.assignedChat));
 
     } catch (err) {
       console.log(err.message)
@@ -333,7 +340,7 @@ function Contact() {
           <div className={styles.resolvedText}>This chat has been resolved</div>
         ) :( selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
           <div className={styles.resolvedText}>
-            This chat is assigned to a different team member. You no longer have access.
+            This chat is assigned to a different team member.You no longer have access.
           </div>
         ) : (
           <div className={styles.searchContainer}>
