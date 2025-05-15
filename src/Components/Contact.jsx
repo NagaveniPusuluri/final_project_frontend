@@ -43,6 +43,7 @@ function Contact() {
   })
 
   const token = localStorage.getItem("authToken");
+  if (!token) return;
   const storedUserId = localStorage.getItem("userId")
   const id = selectedCustomer ? selectedCustomer._id : null
 
@@ -91,6 +92,7 @@ function Contact() {
 
   useEffect(() => {
     const init = async () => {
+      if(!storedUserId || !role) return;
       if (role === "admin") {
         await fetchingCust();
 
@@ -174,7 +176,6 @@ function Contact() {
       // console.log("data")
       return;
     }
-
 
     try {
       const response = await fetch(`${url}/user/message/update/?memberId=${assignedTo}&ticketId=${selectedCustomer._id}`, {
@@ -263,7 +264,7 @@ function Contact() {
         <div className={styles.messageContainer}>
 
           {selectedCustomer?.status !== 'resolved' &&
-            (!selectedCustomer.assignedTo || selectedCustomer.assignedTo === storedUserId
+            (!selectedCustomer?.assignedTo || selectedCustomer?.assignedTo === storedUserId
             ) && selectedCustomer?.messages?.map((msg, index) => (
               <div
                 key={index}
@@ -285,7 +286,7 @@ function Contact() {
 
         {selectedCustomer?.status === 'resolved' ? (
           <div className={styles.resolvedText}>This chat has been resolved</div>
-        ) : (selectedCustomer?.assignedTo && selectedCustomer.assignedTo !== storedUserId) ? (
+        ) : (selectedCustomer?.assignedTo && selectedCustomer?.assignedTo !== storedUserId) ? (
           <div className={styles.resolvedText}>
             This chat is assigned to a different team member.You no longer have access.
           </div>
