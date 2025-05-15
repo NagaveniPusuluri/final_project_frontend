@@ -64,25 +64,25 @@ function Contact() {
   }
 
   const fetchingTeamMegs = async () => {
-    try{
-    const res = await fetchTeamMessages(storedUserId);
-    console.log(res);
-    setDetails(res.data)
+    try {
+      const res = await fetchTeamMessages(storedUserId);
+      console.log(res);
+      setDetails(res.data)
 
-    const stored = localStorage.getItem("active_chat");
-    if (stored) {
-      const parsedStored = JSON.parse(stored);
-      const matchedCustomer = res.data.find(cust => cust._id === parsedStored._id);
-      if (matchedCustomer) {
-        setSelectedCustomer(matchedCustomer);
-      } else {
-        setSelectedCustomer(parsedStored);
+      const stored = localStorage.getItem("active_chat");
+      if (stored) {
+        const parsedStored = JSON.parse(stored);
+        const matchedCustomer = res.data.find(cust => cust._id === parsedStored._id);
+        if (matchedCustomer) {
+          setSelectedCustomer(matchedCustomer);
+        } else {
+          setSelectedCustomer(parsedStored);
+        }
       }
+    } catch (err) {
+      console.log(err.message)
     }
-  }catch(err){
-    console.log(err.message)
   }
-}
 
   const fetchingTeamMembers = async () => {
     const res = await fetchTeamDetails(storedUserId);
@@ -92,7 +92,7 @@ function Contact() {
 
   useEffect(() => {
     const init = async () => {
-      if(!storedUserId || !role) return;
+      if (!storedUserId || !role) return;
       if (role === "admin") {
         await fetchingCust();
 
@@ -314,21 +314,22 @@ function Contact() {
                 <h3 className={styles.chatMessage}>{selectedCustomer?.name}</h3>
               </div>
               <h2 className={styles.profileName}>Details</h2>
-              <div className={styles.miniContainer}>
+              <div className={styles.miniContainerTop}>
                 <img src={contact} alt='cust-name' />
                 <span className={styles.custDetail}>{selectedCustomer?.name}</span>
               </div>
-              <div className={styles.miniContainer}>
+              <div className={styles.miniContainerTop}>
                 <img src={phone} alt='cust-phone' />
                 <span className={styles.custDetail}>{selectedCustomer?.phone}</span>
               </div>
-              <div className={styles.miniContainer}>
+              <div className={styles.miniContainerTop}>
                 <img src={email} alt='cust-email' />
                 <span className={styles.custDetail}>{selectedCustomer?.email}</span>
               </div>
             </div>
           ) : (<div>No messages</div>)}
           <div className={styles.selectedContainer}>
+
             <h2 className={styles.profileName}>Teammates</h2>
 
 
@@ -344,14 +345,16 @@ function Contact() {
                 }}
               >
                 <option value="" className={styles.subHeading} >Select a user</option>
-
-                {teamMembers.map((member, index) => (
-                  <option value={member._id} key={index}>
-                    {member.username}
-                  </option>
-                ))}
+                {(!selectedCustomer?.assignedTo || selectedCustomer?.assignedTo === storedUserId) &&
+                  teamMembers.map((member, index) => (
+                    <option value={member._id} key={index}>
+                      {member.username}
+                    </option>
+                  ))
+                }
               </select>
             </div>
+
 
 
             <div className={styles.miniContainer}>
@@ -363,8 +366,12 @@ function Contact() {
                     onChange={handleStatusChange}
                   >
                     <option className={styles.subHeading} value="#">Ticket Status</option>
+                    {(!selectedCustomer?.assignedTo || selectedCustomer?.assignedTo === storedUserId) && (
+                      <>
                     <option className={styles.subHeading} value="resolved">Resolved</option>
                     <option className={styles.subHeading} value="unresolved">Unresolved</option>
+                    </>
+                    )}
                   </select>
                 </div>
               </div>
