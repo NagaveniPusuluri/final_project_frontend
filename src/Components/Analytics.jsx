@@ -70,7 +70,7 @@ function Analytics() {
     const averageReplyTimeMs = replyCount > 0 ? totalReplyTime / replyCount : 0;
     const minutes = Math.floor(averageReplyTimeMs / 60000);
     const seconds = Math.floor((averageReplyTimeMs % 60000) / 1000);
-    const formattedTime = `${minutes}m ${seconds}s`;
+    const formattedTime = `${minutes}min ${seconds}sec`;
 
     setReplyingTime(formattedTime);
 
@@ -113,7 +113,7 @@ function Analytics() {
           <div className={styles.miniContainer}>
             <p className={styles.para}>For highest customer satisfaction rates you should aim to reply to an incoming customer's message in 15 seconds or less. Quick responses will get you more conversations, help you earn customers trust and make more sales.</p>
 
-            <p className={styles.paraRight}>{`${replyingTime} mins`}</p>
+            <p className={styles.paraRight}>{`${replyingTime}`}</p>
           </div>
         </div>
 
