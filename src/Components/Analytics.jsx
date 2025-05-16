@@ -67,12 +67,13 @@ function Analytics() {
       }
     });
 
+    const averageReplyTimeMs = replyCount > 0 ? totalReplyTime / replyCount : 0;
+    const minutes = Math.floor(averageReplyTimeMs / 60000);
+    const seconds = Math.floor((averageReplyTimeMs % 60000) / 1000);
+    const formattedTime = `${minutes}m ${seconds}s`;
 
-    const averageReplyTimeMinutes = replyCount > 0 ? Math.round((totalReplyTime / replyCount) / (1000 * 60)) : 0;
-    setReplyingTime(averageReplyTimeMinutes);
-    setReplyingTime(averageReplyTimeMs)
+    setReplyingTime(formattedTime);
 
-    console.log(`Avg reply time: ${averageReplyTimeMs} mins`);
   }
 
   const fetchMissed = async () => {
