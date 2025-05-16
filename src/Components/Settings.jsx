@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/settings.module.css'
-import { settings } from '../services'
+import {getUserDetails, settings } from '../services'
 
 function Settings() {
 
@@ -63,6 +63,34 @@ function Settings() {
       setLoading(false);
     }
   }
+
+  // useEffect(() => {
+  //   const storedUserId = localStorage.getItem("userId");
+  //   if (storedUserId) {
+  //     setUserId(storedUserId);
+  
+  //     const fetchUserData = async () => {
+  //       const { response, data } = await getUserDetails(storedUserId);
+  //       if (response && response.ok) {
+  //         setFormData({
+  //           firstName: data.firstName || "",
+  //           lastName: data.lastName || "",
+  //           email: data.email || "",
+  //           role: data.role || role,  
+  //           password: "",
+  //           confirmPassword: ""
+  //         });
+  //       } else {
+  //         console.error("Failed to fetch user details", data?.message);
+  //       }
+  //     };
+  
+  //     fetchUserData();
+  //   } else {
+  //     console.error("User ID not found in localStorage");
+  //     window.location.href = "/login";
+  //   }
+  // }, []);
 
   return (
     <div className={styles.container}>

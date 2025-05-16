@@ -232,4 +232,15 @@ export async function fetchMissedChats(){
     }
 }
 
+export async function getUserDetails(userId) {
+    try {
+      const response = await fetch(`/api/users/${userId}`); 
+      const data = await response.json();
+      return { response, data };
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+      return { error };
+    }
+  };
+
 export default login;
